@@ -25,7 +25,7 @@ public class Date {
 			this._month = month;
 		}
 		//TODO falta comprobar el dia
-		if ((day) < 1 || (day > getDaysOfMonth(month))) throws DateException{
+		if ((day) < 1 || (day > getDaysOfMonth(month))) {
 			throw new DateException("Dia " + day + " no valido" +
 					" Valores posibles entre 1 y 12.");
 		} else {
@@ -51,7 +51,7 @@ public class Date {
 		return esElMismoDia;
 	}
 
-	public Boolean isSameMonth{ 
+	//public Boolean isSameMonth{ 
 
 	/**
 	 * Clase setMonth, setea el atributo 
@@ -108,21 +108,22 @@ public class Date {
 				case 8:
 				case 10:
 				case 12:
-			number=31;
+			//number=31;
 				break;
 				case 4:
 				case 6:
 				case 9:
 				case 11:
-			number=30;
+			//number=30;
 				break;
 				case 2:
-			number=28;
+			//number=28;
 			nombreMes="Febrero";
 				break;
 				default: 
-			number=-1;
+			//number=-1;
 		}
+		return nombreMes;
 	}
 	
 	@Override

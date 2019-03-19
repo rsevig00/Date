@@ -6,7 +6,7 @@ public class MainDate {
 
 		Date today;
 			int meses = (int) (Math.random()*12)+1;
-			System.out.printnln(meses);
+			System.out.println(meses);
 		try {
 			today = new Date(99, 14, 2017);
 			System.out.println(today.toString());
