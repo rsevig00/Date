@@ -17,6 +17,10 @@
       <echo message="Compiling...done"/>
     </target>
 
+    <target name="doc" description="generate documentation">
+	<javadoc sourcepath="${src}" destdir="${documentacion}"/>
+    </target>
+
     <target name="run" depends="compile">
       <java classname="es.unileon.prg.date.MainDate">
          <classpath>
