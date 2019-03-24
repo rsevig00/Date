@@ -4,17 +4,17 @@ public class MainDate {
 
 	public static void main(String[] args) {
 
-		Date today, nextDate;
-			//int meses = (int) (Math.random()*12)+1;
-			//System.out.println(meses);
+		Date today, otherDate;
+
 		try {
-			today = new Date(19, 2, 2017);
-			System.out.println(today.toString());
+			today = new Date(5, 4, 2017);
+			otherDate = new Date(5, 4, 2017);
+			System.out.println(today.toString());			
+			System.out.println(otherDate.toString());
+			today.isSame(otherDate);
 		} catch (DateException e) {
 			System.out.println(e.getMessage());
 		}
 
 	}
-
 }
-
