@@ -1,10 +1,23 @@
 package es.unileon.prg.date;
 
+/**
+ *
+ *Class date
+ *
+ *@version initial
+ *@author Raul Sevillano
+ *
+ */
+
 public class Date {
 
 	private int day;
 	private int month;
 	private int year;
+	
+	/**
+	 *Constructor of class date
+	 */
 
 	public Date(int day, int month, int year) throws DateException{
 		this.year = year;
@@ -23,7 +36,11 @@ public class Date {
 		}
 		this.day = day;
 	}
-	
+
+	/**
+	 *@return the day
+	 */
+
 	public int getDay() {
 		return day;
 	}
@@ -31,6 +48,7 @@ public class Date {
 	/**
 	 * @return the month
 	 */
+
 	public int getMonth() {
 		return month;
 	}
@@ -38,23 +56,40 @@ public class Date {
 	/**
 	 * @return the year
 	 */
+
 	public int getYear() {
 		return year;
 	}
-		
+	
+	/**
+	 *@return Check if the year of two dates is the same
+	 */
+	
 	public Boolean isSameYear(Date other) {
 		return getYear() == other.getYear();
 	}
+	
+	/**
+	 *@return Check if the month of two dates is the same
+	 */
 
 	public Boolean isSameMonth(Date other) {
 		return getMonth() == other.getMonth();
 
 	}
+	
+	/**
+	 *@return Check if the day of two dates is the same
+	 */
 
 	public Boolean isSameDay(Date other) {
 		return getDay() == other.getDay();
 
-}
+	}
+	
+	/**
+	 *Method that combines the previous three in one
+	 */
 
 	public void isSame(Date other) {
 		StringBuffer salida = new StringBuffer();
@@ -70,6 +105,11 @@ public class Date {
 		System.out.println(salida.toString());
 	}
 	
+	/**
+	 *@return Number of days of the current month
+	 *We dont consider leap years
+	 */
+
 	public int getDaysOfMonth(int month){
 		int number=0;
 			switch(month){
@@ -98,6 +138,10 @@ public class Date {
 		return number;
 	}
 	
+	/**
+	 *@return The name of the current month
+	 */
+
 	private String printMonthName(int month){
 		String nombreMes="";
 		switch(month){
@@ -143,6 +187,11 @@ public class Date {
 		return nombreMes;
 	}
 	
+	/**
+	 *@return If the date of the month is correct
+	 *We dont consider leap years
+	 */
+
 	public Boolean isDayRight(int day, int month){
 		boolean rigth=true;
 			switch(month){
@@ -170,8 +219,12 @@ public class Date {
 			}
 			return rigth;
 		}
+
+	/**
+	 *@return The name of the current month
+	 */
 		
-		public String getMonthSeason(int month){
+	public String getMonthSeason(int month){
 			String nombreEstacion="";
 		switch(month){
 			case 1:
@@ -195,6 +248,10 @@ public class Date {
 		return nombreEstacion;
 	}
 	
+	/**
+	 *@return The name of the months with the same number of days of the current month
+	 */
+
 	public String sameDaysMonths(){
 		String mes="";
 		if(month==2){
@@ -211,7 +268,10 @@ public class Date {
 	return mes;
 }
 
-	
+	/**
+	 *@return The number of months until year finish
+	 */
+
 	public int monthsUntilEndYear(){
 		int endMonth=0;
 		do{
@@ -221,17 +281,25 @@ public class Date {
 		while (month<12);
 	return endMonth;
 	}
-		
-	public int daysUntilEndMonth(int month){
-		int endDays=0;
-			do{
-				day+=1;
-				endDays+=1;
-			}
-			while(day<getDaysOfMonth(month));
-		return endDays;
-	}
 	
+	/**
+	 *Method that print the dates until the month finish
+	 */
+	
+	public void datesUntilEndMonth(){
+		int i;
+		String dateLeft="";
+			for(i=day;i<getDaysOfMonth(month);i++){
+				dateLeft=i+"/"+month+"/"+year;
+				System.out.println(dateLeft+"\n");
+		}
+	} 
+	
+	/**
+	 *Method that generates a ramdom date
+	 *@return The number of tries needed to get the same date of the given date.
+	 */
+
 	public int ramdomDate(int day, int month){
 		int i=0, j=0, tries=0;
 		while((i!=day) && (j!=month)){
@@ -242,6 +310,11 @@ public class Date {
 		return tries;
 	}
 	
+	/**
+	 *Same method as previous with another type of loop
+	 *@return The number of tries needed to get the same date of the given date.
+	 */
+
 	public int ramdomDateDo(int day, int month){
 		int i=0, j=0, tries=0;
 		do{
@@ -252,18 +325,93 @@ public class Date {
 		while((i!=day) && (j!=month));
 	return tries;
 }
+	
+	/**
+	 *
+	 *@return The number of days since year start
+	 */
+	
+	public int daysSinceYearStart(){
+		int dias = 0;
+			if(month==1){
+				dias=day;
+			}
+			if(month==2){
+				dias=day+31;
+			}
+			if(month==3){
+				dias=day+31+28;
+			}
+			if(month==4){
+				dias=day+(31*2)+28;
+			}
+			if(month==5){
+				dias=day+(31*2)+28+30;
+			}
+			if(month==6){
+				dias=day+(31*3)+28+30;
+			}
+			if(month==7){
+				dias=day+(31*3)+28+(30*2);
+			}
+			if(month==8){
+				dias=day+(31*4)+28+(30*2);
+			}
+			if(month==9){
+				dias=day+(31*5)+28+(30*2);
+			}
+			if(month==10){
+				dias=day+(31*5)+28+(30*3);
+			}
+			if(month==11){
+				dias=day+(31*6)+28+(30*3);
+			}
+			if(month==12){
+				dias=day+(31*6)+28+(30*4);
+			}
+		return dias;
+	}
+	
+	/**
+	 *
+	 *@return The name of day of the week of the current date.
+	 *We dont consider leap years
+	 *We consider that 1/1 is monday
+	 */
+
+	public String dayOfWeek(){
+		int diaSemana=daysSinceYearStart()%7;
+			if(diaSemana==0){
+				return "Lunes";
+			}
+			if(diaSemana==1){
+				return "Martes";
+			}
+			if(diaSemana==2){
+				return "Miercoles";
+			}
+			if(diaSemana==3){
+				return "Jueves";
+			}
+			if(diaSemana==4){
+				return "Viernes";
+			}
+			if(diaSemana==5){
+				return "Sabado";
+			}else{
+				return "Domingo";
+			}
+		}
+	
+	/**
+	 *
+	 *@return the current date
+	 */
 
 	@Override
 	public String toString(){
 		StringBuffer salida = new StringBuffer();
 		salida.append(this.day + "/" + this.month + "/" + this.year+".\n");
-		salida.append("Los meses con el mismo numero de dias son: "+sameDaysMonths()+".\n");
-		salida.append("El mes es "+printMonthName(month)+"\n");
-		salida.append("Quedan "+daysUntilEndMonth(month)+ " dias para que se acabe el mes.\n");
-		salida.append("Estamos en "+getMonthSeason(month)+"\n");
-		salida.append("El mes tiene "+getDaysOfMonth(month)+" dias\n");
-		salida.append("Quedan "+monthsUntilEndYear()+ " meses para que se acabe el año.\n");
-		salida.append("He tardado "+ramdomDate(day,month)+" veces en encontrar la fecha aleatoriamente\n");
 		return salida.toString();
 		}
 }

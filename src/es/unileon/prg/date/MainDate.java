@@ -7,8 +7,8 @@ public class MainDate {
 		Date today, otherDate;
 
 		try {
-			today = new Date(5, 4, 2017);
-			otherDate = new Date(5, 4, 2017);
+			today = new Date(5, 1, 2019);
+			otherDate = new Date(7, 4, 2017);
 			System.out.println(today.toString());			
 			System.out.println(otherDate.toString());
 			today.isSame(otherDate);

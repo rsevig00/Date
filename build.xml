@@ -4,11 +4,13 @@
     <property name="src" value="src"/>
     <property name="classes" value="classes"/>
     <property name="conf" value="etc"/>
+    <property name="doc" value="doc"/>
 
     <property name="paquetes" value="es.unileon.prg.date"/>
 
     <target name="clean">
       <delete dir="${classes}"/>
+      <delete dir="${doc}"/>
     </target>
 
     <target name="compile" depends="clean">
@@ -18,7 +20,8 @@
     </target>
 
     <target name="doc" description="generate documentation">
-	<javadoc sourcepath="${src}" destdir="${documentacion}"/>
+	<mkdir dir="${doc}"/>
+	<javadoc sourcepath="${src}" classpath="${lib}" destdir="${doc}" verbose="true" author="true" access="private" splitindex="true" version="true" windowtitle="${titulo}" doctitle="${titulo}"/>
     </target>
 
     <target name="run" depends="compile">
@@ -29,6 +32,6 @@
       </java>
     </target>
 
-    <target name="todo" depends="run"/>
+    <target name="todo" depends="clean, doc, run"/>
 
 </project>
